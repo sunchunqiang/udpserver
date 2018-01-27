@@ -10,7 +10,9 @@
 #include <iostream>
 #include <chrono>
 #include <mutex>
+#include <string>
 #include <atomic>
+#include <thread>
 
 using namespace std;
 using namespace std::chrono;
@@ -33,10 +35,19 @@ void testatomic()
 
 	}
 };
-
+class A
+{
+public:
+	int i;
+	string name;
+};
 int main() {
-	test_queue();
-
-
+//	test_queue();
+	A a={1,"A is my name"};
+	cout << a.i <<"," << a.name << endl;
+	A b =move(a);
+	cout << a.i <<"," << a.name << endl;
+	cout << b.i <<"," << b.name << endl;
+	cout << std::thread::hardware_concurrency() << endl;
 	return 0;
 }
