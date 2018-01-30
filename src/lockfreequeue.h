@@ -178,9 +178,14 @@ public:
 		tail = newptr;
 	}
 
-	void push(T& data) {
+	void push(T& data)
+	{
+		push(move(data));
+	}
 
-		unique_ptr<T> newdata(new T(data));
+	void push(T&& data) {
+
+		unique_ptr<T> newdata(new T(move(data)));
 		nodeptr old_tail = tail.load();
 #ifdef __DEBUG__
 		pushed_nodes++;

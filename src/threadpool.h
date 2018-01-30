@@ -10,6 +10,7 @@
 #include <future>
 #include <atomic>
 #include <memory>
+#include <vector>
 #include "lockfreequeue.h"
 
 using namespace std;
@@ -61,12 +62,16 @@ class thread_pool {
 	atomic<bool> done;
 	std::vector<std::thread> threads;
 
-	void worker_thread() {
-		while (!done) {
-			unique_ptr<taskwrapper> task = work_queue.pop()
-			if (task != nullptr) {
+	void worker_thread()
+	{
+		while (!done)
+		{
+			unique_ptr<taskwrapper> task = work_queue.pop();
+			if (task != nullptr)
+			{
 				(*task)();
-			} else {
+			}
+			else {
 				std::this_thread::yield();
 			}
 		}
@@ -104,10 +109,10 @@ public:
 		}
 	}
 
-	template<typename FunctionType>
-	std::future<typename std::result_of<FunctionType()>::type> submit(
-			FunctionType f) {
-		typedef typename std::result_of<FunctionType()>::type result_type;
+	template<typename Task>
+	std::future<typename std::result_of<Task()>::type> submit(Task& f)
+	{
+		typedef typename std::result_of<Task()>::type result_type;
 		std::packaged_task<result_type()> task(std::move(f));
 		std::future<result_type> res(task.get_future());
 		work_queue.push(std::move(task));
