@@ -14,7 +14,7 @@
 #include "lockfreequeue.h"
 
 using namespace std;
-
+//add some comments for branch
 class taskwrapper {
 	struct impl_base {
 		virtual void call()=0;
