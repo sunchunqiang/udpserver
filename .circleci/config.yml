@@ -12,7 +12,19 @@ jobs:
       - run:
           name: "build step 2"
           command:  more ttt.txt     
-      
+  
+  test:
+    docker:
+      - image: circleci/python:3.6.2-stretch-browsers  
+    steps:
+      - checkout
+      - run:
+          name: "build test 1"
+          command: echo "build step 1" >>ttt.txt
+      - run:
+          name: "build test 2"
+          command:  more ttt.txt      
+  
   deploy:
 
     docker:
@@ -37,7 +49,10 @@ workflows:
   version: 2
   build_and_test:
     jobs:
-      
+      - test:
+          filters:
+            branches:
+              only: master        
       - build:
           filters:
             branches:
