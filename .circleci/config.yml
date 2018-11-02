@@ -6,10 +6,10 @@ jobs:
     steps:
       - checkout
       - run:
-        name: step 1
+        name: test step 1
         command: echo "test step 1" >>ttt.txt
       - run:
-        name: step 2
+        name: test step 2
         command:  more ttt.txt    
   build:
     docker:
