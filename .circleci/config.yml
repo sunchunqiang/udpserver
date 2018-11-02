@@ -8,9 +8,7 @@ jobs:
       - run:
         name: "qqqq"
         command: echo "test step 1" >>ttt.txt
-      - run:
-        name: "eeee"
-        command: more ttt.txt    
+
   build:
     docker:
       - image: circleci/python:3.6.2-stretch-browsers  
