@@ -4,9 +4,6 @@ jobs:
     docker:
       - image: circleci/python:3.6.2-stretch-browsers
       
-    filters:
-      tags:
-        only: /^v.*/
       
     steps:
       - checkout
@@ -21,9 +18,14 @@ jobs:
       - run:
           name: Release cocoapods
           command: python3 cocoapods_release.py
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - build:
           filters:
+            branches:
+              only: mastet
             tags:
               only: /^v.*/
-
-
-
