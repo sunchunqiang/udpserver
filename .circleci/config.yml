@@ -1,13 +1,5 @@
 jobs:
 
-  test:
-    docker:
-      - image: circleci/python:3.6.2-stretch-browsers  
-    steps:
-      - checkout
-      - run:
-        name: "qqqq"
-        command: echo "test step 1" >>ttt.txt
 
   build:
     docker:
