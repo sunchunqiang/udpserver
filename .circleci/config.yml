@@ -6,21 +6,21 @@ jobs:
     steps:
       - checkout
       - run:
-        name: test step 1
+        name: qqqq
         command: echo "test step 1" >>ttt.txt
       - run:
-        name: test step 2
-        command:  more ttt.txt    
+        name: eeee
+        command: more ttt.txt    
   build:
     docker:
       - image: circleci/python:3.6.2-stretch-browsers  
     steps:
       - checkout
       - run:
-        name: step 1
+        name: eeee
         command: echo "build step 1" >>ttt.txt
       - run:
-        name: step 2
+        name: adadasd
         command:  more ttt.txt     
       
   deploy:
