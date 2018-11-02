@@ -26,7 +26,8 @@ workflows:
       - build:
           filters:
             branches:
-              only: master
-              only : tagging
+              only: 
+              - master
+              - tagging
             tags:
-           #   only: /^[0-9]++.[0-9]++.[0-9]++$/
+              only: /^[0-9]++.[0-9]++.[0-9]++$/
