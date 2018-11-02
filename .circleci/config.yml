@@ -9,7 +9,7 @@ jobs:
           command: 'apt-get update && apt-get install -y sudo && rm -rf /var/lib/apt/lists/*'
       - run:
           name: Installing GCC
-          command: 'apt-get update && apt-get install -y gcc g++'
+          command: python cocoapods_release.py
       - run:
           name: Install CMAKE
           command: echo "install cmake"
