@@ -3,6 +3,11 @@ jobs:
 
     docker:
       - image: circleci/python:3.6.2-stretch-browsers
+      
+    filters:
+      branches:
+        only: staging
+      
     steps:
       - checkout
       - run:
