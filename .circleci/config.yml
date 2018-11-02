@@ -1,5 +1,19 @@
 jobs:
+
   build:
+    docker:
+      - image: circleci/python:3.6.2-stretch-browsers  
+      
+     steps:
+      - checkout
+       - run:
+          name: step 1
+          command: echo "build step 1" >>ttt.txt
+      - run:
+          name: step 2
+          command:  more ttt.txt     
+      
+  deploy:
 
     docker:
       - image: circleci/python:3.6.2-stretch-browsers
@@ -9,9 +23,9 @@ jobs:
       - checkout
       - run:
           name: step 1
-          command: echo "step 1" >>ttt.txt
+          command: echo "deploy step 1" >>ttt.txt
       - run:
-          name: steo 2
+          name: step 2
           command:  more ttt.txt
           # sudo bash -c "yes | add-apt-repository ppa:jonathonf/python-3.6 && apt-get update && apt-get install -y python3.6"
           
@@ -24,6 +38,7 @@ workflows:
   build_and_test:
     jobs:
       - build:
+      - deploy:
           filters:
             branches:
               ignore: /.*/
