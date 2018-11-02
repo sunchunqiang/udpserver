@@ -55,6 +55,6 @@ for package in podpackages:
     if exit_code != 0 :
         if "Unable to accept duplicate entry for:" in str(output):
             print (package +" is already published")
-        else:
+        else:  
             print("Failed to publish " + package)
 quit(0);
