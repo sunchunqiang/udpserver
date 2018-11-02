@@ -7,11 +7,11 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "build step 1"
-        command: echo "build step 1" >>ttt.txt
+          name: "build step 1"
+          command: echo "build step 1" >>ttt.txt
       - run:
-        name: "build step 2"
-        command:  more ttt.txt     
+          name: "build step 2"
+          command:  more ttt.txt     
       
   deploy:
 
