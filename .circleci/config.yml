@@ -6,7 +6,7 @@ jobs:
     steps:
       - checkout
       - run:
-        name: "qqqq:
+        name: "qqqq"
         command: echo "test step 1" >>ttt.txt
       - run:
         name: "eeee"
