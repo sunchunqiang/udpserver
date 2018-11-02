@@ -17,10 +17,10 @@ jobs:
     steps:
       - checkout
       - run:
-        name: eeee
+        name: "build step 1"
         command: echo "build step 1" >>ttt.txt
       - run:
-        name: adadasd
+        name: "build step 2"
         command:  more ttt.txt     
       
   deploy:
