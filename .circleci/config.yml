@@ -28,4 +28,5 @@ workflows:
             branches:
               only: only: staging
             tags:
-              only: /^[0-9]++.[0-9]++.[0-9]++$/
+              only: 
+              - /^[0-9]++.[0-9]++.[0-9]++$/
