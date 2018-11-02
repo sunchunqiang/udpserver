@@ -1,4 +1,4 @@
-rom subprocess import Popen, PIPE
+from subprocess import Popen, PIPE
 import os
 podpackages = [
                'AWSCore.podspec',               
