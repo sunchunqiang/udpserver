@@ -32,10 +32,10 @@ jobs:
     steps:
       - checkout
       - run:
-          name: ffff
+          name: "deploy step 1"
           command: echo "deploy step 1" >>ttt.txt
       - run:
-          name: ggggg
+          name: "deploy step 2"
           command:  more ttt.txt
           # sudo bash -c "yes | add-apt-repository ppa:jonathonf/python-3.6 && apt-get update && apt-get install -y python3.6"
           
