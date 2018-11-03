@@ -3,7 +3,7 @@ jobs:
 
   build:
     docker:
-      - image: circleci/python:3.6.2-stretch-browsers  
+      - image: cibuilds/github:0.10  
     steps:
       - checkout
       - run:
@@ -27,7 +27,7 @@ jobs:
       - run:
           name: "Publish Release on GitHub"
           command: |
-            go get github.com/tcnksm/ghr
+          #  go get github.com/tcnksm/ghr
             echo "release content" >> release.txt
             VERSION=$(my-binary --version)
             echo  ${VERSION}
