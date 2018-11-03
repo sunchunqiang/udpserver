@@ -46,6 +46,7 @@ jobs:
           name: "deploy step 1"
           command: echo "deploy step 1" >>ttt.txt
       - run: echo ${CIRCLE_TAG}
+      - run: echo "release content" >> release.txt
       - run:
           name: "deploy step 2"
           command:  more ttt.txt
