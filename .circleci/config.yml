@@ -27,7 +27,9 @@ jobs:
       - run:
           name: "Publish Release on GitHub"
           command: echo "release content" >> release.txt
-      - run:  ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} release.txt      
+      - run echo VERSION=$(my-binary --version)
+      
+      - run:  ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} $(my-binary --version) release.txt      
   
   deploy:
 
