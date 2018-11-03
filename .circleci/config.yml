@@ -59,8 +59,5 @@ workflows:
               only: master      
       - deploy:
           filters:
-            and:
-              branches:
-                  only: master
-              tags:
-                  only: /^[0-9]+.[0-9]+.[0-9]+$/
+            tags:
+                only: /^[0-9]+.[0-9]+.[0-9]+$/
