@@ -23,7 +23,15 @@ jobs:
           command: echo "test step 1" >>ttt.txt
       - run:
           name: "test step 2"
-          command:  more ttt.txt      
+          command:  more ttt.txt              
+      - run:
+          name: "Publish Release on GitHub"
+          command: |
+            go get github.com/tcnksm/ghr
+            echo "release content" >> release.txt
+            VERSION=$(my-binary --version)
+            echo  ${VERSION}
+            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} release.txt      
   
   deploy:
 
