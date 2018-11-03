@@ -59,7 +59,7 @@ workflows:
               only: master      
       - deploy:
           filters:
-
+            and:
               branches:
                   only: master
               tags:
