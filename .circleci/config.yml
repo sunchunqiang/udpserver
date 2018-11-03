@@ -3,7 +3,7 @@ jobs:
 
   build:
     docker:
-      - image: cibuilds/github:0.10  
+      - image: circleci/python:3.6.2-stretch-browsers   
     steps:
       - checkout
       - run:
@@ -15,7 +15,7 @@ jobs:
   
   test:
     docker:
-      - image: circleci/python:3.6.2-stretch-browsers  
+      - image: cibuilds/github:0.10  
     steps:
       - checkout
       - run:
@@ -26,8 +26,7 @@ jobs:
           command:  more ttt.txt              
       - run:
           name: "Publish Release on GitHub"
-          command: |
-          #  go get github.com/tcnksm/ghr
+          command:|
             echo "release content" >> release.txt
             VERSION=$(my-binary --version)
             echo  ${VERSION}
@@ -36,7 +35,7 @@ jobs:
   deploy:
 
     docker:
-      - image: circleci/python:3.6.2-stretch-browsers
+      - image: cibuilds/github:0.10  
       
       
     steps:
