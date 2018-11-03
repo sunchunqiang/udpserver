@@ -34,7 +34,7 @@ jobs:
       - run: echo ${CIRCLE_SHA1}          
       - run:  ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} "0.06" release.txt      
   
-  deploy:
+  deploy: 
 
     docker:
       - image: cibuilds/github:0.10  
