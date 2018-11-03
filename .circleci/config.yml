@@ -26,11 +26,10 @@ jobs:
           command:  more ttt.txt              
       - run:
           name: "Publish Release on GitHub"
-          command:|
-            echo "release content" >> release.txt
-            VERSION=$(my-binary --version)
-            echo  ${VERSION}
-            ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} release.txt      
+          command: echo "release content" >> release.txt
+      - run: VERSION=$(my-binary --version)
+      - run:  echo  ${VERSION}
+      - run:  ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} release.txt      
   
   deploy:
 
