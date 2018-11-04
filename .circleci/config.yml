@@ -27,10 +27,10 @@ jobs:
       - run:
           name: "Publish Release on GitHub"
           command: |
-          - echo "release content" >> release.txt
-          - echo $(my-binary --version)
-          - echo ${GITHUB_TOKEN}
-          - echo ${CIRCLE_PROJECT_USERNAME}
+            echo "release content" >> release.txt
+            echo $(my-binary --version)
+            echo ${GITHUB_TOKEN}
+            echo ${CIRCLE_PROJECT_USERNAME}
    
 
   deploy: 
