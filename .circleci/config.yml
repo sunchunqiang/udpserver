@@ -1,0 +1,78 @@
+jobs:
+
+
+  build:
+    docker:
+      - image: circleci/python:3.6.2-stretch-browsers   
+    steps:
+      - checkout
+      - run:
+          name: "build step 1"
+          command: echo "build step 1" >>ttt.txt
+      - run:
+          name: "build step 2"
+          command:  more ttt.txt     
+  
+  test:
+    docker:
+      - image: cibuilds/github:0.10  
+    steps:
+      - checkout
+      - run:
+          name: "test step 1"
+          command: echo "test step 1" >>ttt.txt
+      - run:
+          name: "test step 2"
+          command:  more ttt.txt              
+      - run:
+          name: "Publish Release on GitHub"
+          command: echo "release content" >> release.txt
+      - run: echo $(my-binary --version)
+      - run: echo ${GITHUB_TOKEN}
+      - run: echo ${CIRCLE_PROJECT_USERNAME}
+      - run: echo ${CIRCLE_PROJECT_REPONAME}     
+      - run: echo ${CIRCLE_SHA1}        
+      - run: echo ${CIRCLE_TAG}
+
+  deploy: 
+
+    docker:
+      - image: cibuilds/github:0.10  
+      
+      
+    steps:ffffffff
+      - checkout
+      - run:
+          name: "deploy step 1"
+          command: echo "deploy step 1" >>ttt.txt
+      - run: echo ${CIRCLE_TAG}
+      - run: echo "release content" >> release.txt
+      - run:
+          name: "deploy step 2"
+          command:  more ttt.txt
+          
+          # sudo bash -c "yes | add-apt-repository ppa:jonathonf/python-3.6 && apt-get update && apt-get install -y python3.6"
+      - run:  ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} ${CIRCLE_TAG} release.txt      
+           
+      - run:
+          name: Release cocoapods
+          command: python cocoapods_release.py
+
+workflows:
+  version: 2
+  build_and_test:
+    jobs:
+      - test:
+          filters:
+            branches:
+              only: master        
+      - build:
+          filters:
+            branches:
+              only: master      
+      - deploy:
+          filters:
+            branches:
+              ignore: /.*/          
+            tags:
+only: /^[0-9]+.[0-9]+.[0-9]+$/
