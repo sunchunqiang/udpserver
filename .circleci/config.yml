@@ -40,7 +40,7 @@ jobs:
       - image: cibuilds/github:0.10  
       
       
-    steps:ffffffff
+    steps:
       - checkout
       - run:
           name: "deploy step 1"
