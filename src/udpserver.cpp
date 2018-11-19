@@ -35,6 +35,7 @@ int udpserver::run() {
 			char buf[bufflen];
 
 			cout <<"start " << endl;
+    //add comments
 
 			if ((s = socket(AF_INET, SOCK_DGRAM, IPPROTO_UDP)) == -1)
 			{
