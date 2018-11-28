@@ -59,9 +59,16 @@ jobs:
 
 workflows:
   version: 2
+  mytest:
+    jobs:
+      - test
+      
   build_and_test:
     jobs:
-     
+      - test:
+           filters:
+            branches:
+              only: test        
       - build:
           filters:
             branches:
